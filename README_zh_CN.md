@@ -5,7 +5,7 @@
 </a>
 
 [![Build Status](https://travis-ci.org/xxtea/xxtea-js.svg?branch=master)](https://travis-ci.org/xxtea/xxtea-js)
-[![Join the chat at https://gitter.im/xxtea/xxtea-html5](https://img.shields.io/badge/GITTER-join%20chat-green.svg)](https://gitter.im/xxtea/xxtea-js?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Gitter](https://badges.gitter.im/xxtea/xxtea-js.svg)](https://gitter.im/xxtea/xxtea-js?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=body_badge)
 [![bower version](https://img.shields.io/bower/v/xxtea-js.svg)](http://bower.io/search/?q=xxtea-js)
 [![GitHub release](https://img.shields.io/github/release/xxtea/xxtea-js.svg)](https://github.com/xxtea/xxtea-js/releases)
 [![License](https://img.shields.io/github/license/xxtea/xxtea-js.svg)](http://opensource.org/licenses/MIT)
