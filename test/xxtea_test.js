@@ -13,7 +13,7 @@ describe('XXTEA', function(){
         var key = "1234567890";
         var encrypt_data = "D4t0rVXUDl3bnWdERhqJmFIanfn/6zAxAY9jD6n9MSMQNoD8TOS4rHHcGuE=";
         var decrypt_data = XXTEA.decryptFromBase64(encrypt_data, key);
-        console.assert(str === decrypt_data);
+        assert(str === decrypt_data);
     })
   })
 })
