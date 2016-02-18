@@ -60,6 +60,9 @@ module.exports = function (grunt) {
     browserName: 'firefox',
     platform: 'Linux'
   }, {
+    browserName: 'opera',
+    platform: 'Linux'
+  }, {
     browserName: 'chrome',
     platform: 'OS X 10.8'
   }, {
@@ -137,6 +140,14 @@ module.exports = function (grunt) {
     browserName: 'safari',
     platform: 'Windows 7'
   }, {
+    browserName: 'opera',
+    platform: 'Windows 7',
+    version: '11'
+  }, {
+    browserName: 'opera',
+    platform: 'Windows 7',
+    version: '12'
+  }, {
     browserName: 'internet explorer',
     platform: 'Windows XP',
     version: '8.0'
@@ -154,6 +165,14 @@ module.exports = function (grunt) {
   }, {
     browserName: 'firefox',
     platform: 'Windows XP'
+  }, {
+    browserName: 'opera',
+    platform: 'Windows XP',
+    version: '11'
+  }, {
+    browserName: 'opera',
+    platform: 'Windows XP',
+    version: '12'
   }];
 
   grunt.initConfig({
