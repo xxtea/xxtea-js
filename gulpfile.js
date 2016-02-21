@@ -11,5 +11,6 @@ gulp.task('default', function() {
     return gulp.src('src/xxtea.js')
         .pipe(uglify())
         .pipe(rename({suffix: '.min'}))
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest('dist'))
+        .pipe(gulp.dest('test'));
 });

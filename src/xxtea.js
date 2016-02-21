@@ -9,7 +9,7 @@
 |      Roger M. Needham                                    |
 |                                                          |
 | Code Author: Ma Bingyao <mabingyao@gmail.com>            |
-| LastModified: Feb 16, 2016                               |
+| LastModified: Feb 21, 2016                               |
 |                                                          |
 \**********************************************************/
 
@@ -55,7 +55,7 @@
                                "=";
                 }
                 return buf.join('');
-            }
+            };
         }();
     }
 
@@ -76,7 +76,7 @@
                 var i, j, len, r, l, out;
 
                 len = str.length;
-                if (len % 4 != 0) {
+                if (len % 4 !== 0) {
                     return '';
                 }
                 if (/[^ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789\+\/\=]/.test(str)) {
@@ -123,7 +123,7 @@
                     out[j++] = String.fromCharCode(((c3 & 0x03) << 6) | c4);
                 }
                 return out.join('');
-            }
+            };
         }();
     }
 
@@ -184,7 +184,7 @@
     }
 
     function fixk(k) {
-        if (k.length < 4) k.length = 4
+        if (k.length < 4) k.length = 4;
         return k;
     }
 
@@ -254,7 +254,7 @@
                                                      0x80 | ((rune >> 12) & 0x3F),
                                                      0x80 | ((rune >> 6) & 0x3F),
                                                      0x80 | (rune & 0x3F));
-                        ++i;       
+                        ++i;
                         continue;
                     }
                 }
@@ -266,8 +266,7 @@
 
     function utf8DecodeShortString(bs, n) {
         var charCodes = new Array(n);
-        var i = 0, off = 0;
-        for (var len = bs.length; i < n && off < len; i++) {
+        for (var i = 0, off = 0, len = n; i < n && off < len; i++) {
             var unit = bs.charCodeAt(off++);
             switch (unit >> 4) {
             case 0:
@@ -331,8 +330,7 @@
     function utf8DecodeLongString(bs, n) {
         var buf = [];
         var charCodes = new Array(0xFFFF);
-        var i = 0, off = 0;
-        for (var len = bs.length; i < n && off < len; i++) {
+        for (var i = 0, off = 0, len = n; i < n && off < len; i++) {
             var unit = bs.charCodeAt(off++);
             switch (unit >> 4) {
             case 0:
