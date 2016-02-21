@@ -266,7 +266,8 @@
 
     function utf8DecodeShortString(bs, n) {
         var charCodes = new Array(n);
-        for (var i = 0, off = 0, len = n; i < n && off < len; i++) {
+        var i = 0, off = 0;
+        for (var len = bs.length; i < n && off < len; i++) {
             var unit = bs.charCodeAt(off++);
             switch (unit >> 4) {
             case 0:
@@ -330,7 +331,8 @@
     function utf8DecodeLongString(bs, n) {
         var buf = [];
         var charCodes = new Array(0xFFFF);
-        for (var i = 0, off = 0, len = n; i < n && off < len; i++) {
+        var i = 0, off = 0;
+        for (var len = bs.length; i < n && off < len; i++) {
             var unit = bs.charCodeAt(off++);
             switch (unit >> 4) {
             case 0:
@@ -399,25 +401,17 @@
         return buf.join('');
     }
 
-    function utf8Decode(bs) {
-        if (/^[\x00-\x7f]*$/.test(bs) || !(/^[\x00-\xff]*$/.test(bs))) {
-            return bs;
-        }
-        var n = bs.length;
+    // n is UTF16 length
+    function utf8Decode(bs, n) {
+        if (n === undefined || n === null || (n < 0)) n = bs.length;
         if (n === 0) return '';
+        if (/^[\x00-\x7f]*$/.test(bs) || !(/^[\x00-\xff]*$/.test(bs))) {
+            if (n === bs.length) return bs;
+            return bs.substr(0, n);
+        }
         return ((n < 100000) ?
                 utf8DecodeShortString(bs, n) :
                 utf8DecodeLongString(bs, n));
-    }
-
-    function base64ToBytes(base64) {
-        var s = window.atob(base64);
-        var n = s.length;
-        var bytes = new Uint8Array(n);
-        for (var i = 0; i < n; i++) {
-            bytes[i] = s.charCodeAt(i);
-        }
-        return bytes;
     }
 
     function encrypt(data, key) {
