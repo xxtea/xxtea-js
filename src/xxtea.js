@@ -9,7 +9,7 @@
 |      Roger M. Needham                                    |
 |                                                          |
 | Code Author: Ma Bingyao <mabingyao@gmail.com>            |
-| LastModified: Feb 21, 2016                               |
+| LastModified: Oct 4, 2016                                |
 |                                                          |
 \**********************************************************/
 
@@ -330,7 +330,7 @@
 
     function utf8DecodeLongString(bs, n) {
         var buf = [];
-        var charCodes = new Array(0xFFFF);
+        var charCodes = new Array(0x8000);
         var i = 0, off = 0;
         for (var len = bs.length; i < n && off < len; i++) {
             var unit = bs.charCodeAt(off++);
@@ -386,7 +386,7 @@
             default:
                 throw new Error('Bad UTF-8 encoding 0x' + unit.toString(16));
             }
-            if (i >= 65534) {
+            if (i >= 0x7FFF - 1) {
                 var size = i + 1;
                 charCodes.length = size;
                 buf[buf.length] = String.fromCharCode.apply(String, charCodes);
@@ -409,7 +409,7 @@
             if (n === bs.length) return bs;
             return bs.substr(0, n);
         }
-        return ((n < 100000) ?
+        return ((n < 0xFFFF) ?
                 utf8DecodeShortString(bs, n) :
                 utf8DecodeLongString(bs, n));
     }
@@ -450,4 +450,4 @@
         decrypt: decrypt,
         decryptFromBase64: decryptFromBase64
     };
-})(this);
+})(this || [eval][0]('this'));

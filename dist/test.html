@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XXTEA test</title>
+        <meta charset="UTF-8">
+        <script src="xxtea.min.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            var str = "asd123";
+            var key = "1234567890";
+            var encrypt_data = XXTEA.encryptToBase64(str, key);
+            console.log(encrypt_data);
+            var decrypt_data = XXTEA.decryptFromBase64(encrypt_data, key);
+            console.assert(str === decrypt_data);
+        </script>
+    </body>
+</html>
