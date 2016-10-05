@@ -210,8 +210,9 @@ module.exports = function (grunt) {
           browsers: browsers,
           build: process.env.TRAVIS_JOB_ID,
           testname: 'xxtea-js tests',
-          throttled: 5,
+          throttled: 3,
           statusCheckAttempts: -1,
+          pollInterval: 5000,
           maxRetries: 3,
           sauceConfig: {
             'video-upload-on-pass': false
