@@ -43,9 +43,6 @@ module.exports = function (grunt) {
     version: '8.1'
   }, {
     browserName: 'iphone',
-    version: '8.0'
-  }, {
-    browserName: 'iphone',
     version: '7.0'
   }, {
     browserName: 'ipad',
@@ -73,75 +70,114 @@ module.exports = function (grunt) {
     version: '8.1'
   }, {
     browserName: 'ipad',
-    version: '8.0'
-  }, {
-    browserName: 'ipad',
     version: '7.0'
   }, {
     browserName: 'chrome',
-    platform: 'Linux'
-  }, {
-    browserName: 'firefox',
-    platform: 'Linux'
+    platform: 'linux',
+    version: 'latest'
   }, {
     browserName: 'chrome',
-    platform: 'OS X 10.8'
+    platform: 'linux',
+    version: 'latest-1'
+  }, {
+    browserName: 'chrome',
+    platform: 'linux',
+    version: 'latest-2'
+  }, {
+    browserName: 'chrome',
+    platform: 'linux',
+    version: 'latest-3'
+  }, {
+    browserName: 'chrome',
+    platform: 'linux',
+    version: 'latest-4'
+  }, {
+    browserName: 'chrome',
+    platform: 'linux',
+    version: 'latest-5'
+  }, {
+    browserName: 'chrome',
+    platform: 'linux',
+    version: 'latest-6'
+  }, {
+    browserName: 'chrome',
+    platform: 'linux',
+    version: 'latest-7'
+  }, {
+    browserName: 'chrome',
+    platform: 'linux',
+    version: 'latest-8'
+  }, {
+    browserName: 'chrome',
+    platform: 'linux',
+    version: 'latest-9'
+  }, {
+    browserName: 'firefox',
+    platform: 'linux',
+    version: 'latest'
+  }, {
+    browserName: 'firefox',
+    platform: 'linux',
+    version: 'latest-1'
+  }, {
+    browserName: 'firefox',
+    platform: 'linux',
+    version: 'latest-2'
+  }, {
+    browserName: 'firefox',
+    platform: 'linux',
+    version: 'latest-3'
+  }, {
+    browserName: 'firefox',
+    platform: 'linux',
+    version: 'latest-4'
+  }, {
+    browserName: 'firefox',
+    platform: 'linux',
+    version: 'latest-5'
+  }, {
+    browserName: 'firefox',
+    platform: 'linux',
+    version: 'latest-6'
+  }, {
+    browserName: 'firefox',
+    platform: 'linux',
+    version: 'latest-7'
+  }, {
+    browserName: 'firefox',
+    platform: 'linux',
+    version: 'latest-8'
+  }, {
+    browserName: 'firefox',
+    platform: 'linux',
+    version: 'latest-9'
   }, {
     browserName: 'safari',
-    platform: 'OS X 10.8'
-  }, {
-    browserName: 'firefox',
-    platform: 'OS X 10.8'
-  }, {
-    browserName: 'chrome',
-    platform: 'OS X 10.9'
-  }, {
-    browserName: 'safari',
-    platform: 'OS X 10.9'
-  }, {
-    browserName: 'firefox',
-    platform: 'OS X 10.9'
-  }, {
-    browserName: 'chrome',
-    platform: 'OS X 10.10'
-  }, {
-    browserName: 'safari',
-    platform: 'OS X 10.10'
-  }, {
-    browserName: 'firefox',
-    platform: 'OS X 10.10'
-  }, {
-    browserName: 'chrome',
     platform: 'OS X 10.11'
   }, {
     browserName: 'safari',
-    platform: 'OS X 10.11'
+    platform: 'OS X 10.10'
   }, {
-    browserName: 'firefox',
-    platform: 'OS X 10.11'
+    browserName: 'safari',
+    platform: 'OS X 10.9'
+  }, {
+    browserName: 'safari',
+    platform: 'OS X 10.8'
+  }, {
+    browserName: 'safari',
+    platform: 'Windows 7',
+    version: '5.1'
   }, {
     browserName: 'MicrosoftEdge',
     platform: 'Windows 10',
-    version: '20.10240'
+    version: 'latest'
   }, {
     browserName: 'internet explorer',
     platform: 'Windows 10',
-    version: '11.0'
-  }, {
-    browserName: 'internet explorer',
-    platform: 'Windows 8.1',
     version: '11.0'
   }, {
     browserName: 'internet explorer',
     platform: 'Windows 8',
-    version: '10.0'
-  }, {
-    browserName: 'internet explorer',
-    platform: 'Windows 7',
-    version: '11.0'
-  }, {
-    browserName: 'internet explorer',
-    platform: 'Windows 7',
     version: '10.0'
   }, {
     browserName: 'internet explorer',
@@ -152,23 +188,6 @@ module.exports = function (grunt) {
     platform: 'Windows 7',
     version: '8.0'
   }, {
-    browserName: 'chrome',
-    platform: 'Windows 7'
-  }, {
-    browserName: 'firefox',
-    platform: 'Windows 7'
-  }, {
-    browserName: 'safari',
-    platform: 'Windows 7'
-  }, {
-    browserName: 'opera',
-    platform: 'Windows 7',
-    version: '11'
-  }, {
-    browserName: 'internet explorer',
-    platform: 'Windows XP',
-    version: '8.0'
-  }, {
     browserName: 'internet explorer',
     platform: 'Windows XP',
     version: '7.0'
@@ -177,15 +196,9 @@ module.exports = function (grunt) {
     platform: 'Windows XP',
     version: '6.0'
   }, {
-    browserName: 'chrome',
-    platform: 'Windows XP'
-  }, {
-    browserName: 'firefox',
-    platform: 'Windows XP'
-  }, {
     browserName: 'opera',
-    platform: 'Windows XP',
-    version: '11'
+    platform: 'Windows 7',
+    version: '11.64'
   }];
 
   grunt.initConfig({
