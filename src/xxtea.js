@@ -9,17 +9,17 @@
 |      Roger M. Needham                                    |
 |                                                          |
 | Code Author: Ma Bingyao <mabingyao@gmail.com>            |
-| LastModified: Oct 4, 2016                                |
+| LastModified: Dec 27, 2019                               |
 |                                                          |
 \**********************************************************/
 
 (function (global) {
     'use strict';
 
-    if (typeof(global.btoa) == "undefined") {
-        global.btoa = function() {
+    if (typeof (global.btoa) == "undefined") {
+        global.btoa = function () {
             var base64EncodeChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'.split('');
-            return function(str) {
+            return function (str) {
                 var buf, i, j, len, r, l, c;
                 i = j = 0;
                 len = str.length;
@@ -33,45 +33,45 @@
 
                 while (i < len) {
                     c = str.charCodeAt(i++) << 16 |
-                        str.charCodeAt(i++) << 8  |
+                        str.charCodeAt(i++) << 8 |
                         str.charCodeAt(i++);
                     buf[j++] = base64EncodeChars[c >> 18] +
-                               base64EncodeChars[c >> 12 & 0x3f] +
-                               base64EncodeChars[c >> 6  & 0x3f] +
-                               base64EncodeChars[c & 0x3f] ;
+                        base64EncodeChars[c >> 12 & 0x3f] +
+                        base64EncodeChars[c >> 6 & 0x3f] +
+                        base64EncodeChars[c & 0x3f];
                 }
                 if (r == 1) {
                     c = str.charCodeAt(i++);
                     buf[j++] = base64EncodeChars[c >> 2] +
-                               base64EncodeChars[(c & 0x03) << 4] +
-                               "==";
-                    }
+                        base64EncodeChars[(c & 0x03) << 4] +
+                        "==";
+                }
                 else if (r == 2) {
                     c = str.charCodeAt(i++) << 8 |
                         str.charCodeAt(i++);
                     buf[j++] = base64EncodeChars[c >> 10] +
-                               base64EncodeChars[c >> 4 & 0x3f] +
-                               base64EncodeChars[(c & 0x0f) << 2] +
-                               "=";
+                        base64EncodeChars[c >> 4 & 0x3f] +
+                        base64EncodeChars[(c & 0x0f) << 2] +
+                        "=";
                 }
                 return buf.join('');
             };
         }();
     }
 
-    if (typeof(global.atob) == "undefined") {
-        global.atob = function() {
+    if (typeof (global.atob) == "undefined") {
+        global.atob = function () {
             var base64DecodeChars = [
                 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
                 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
                 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 62, -1, -1, -1, 63,
                 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, -1, -1, -1, -1, -1, -1,
-                -1,  0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14,
+                -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,
                 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, -1, -1, -1, -1, -1,
                 -1, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
                 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, -1, -1, -1, -1, -1
             ];
-            return function(str) {
+            return function (str) {
                 var c1, c2, c3, c4;
                 var i, j, len, r, l, out;
 
@@ -176,7 +176,7 @@
     }
 
     function int32(i) {
-      return i & 0xFFFFFFFF;
+        return i & 0xFFFFFFFF;
     }
 
     function mx(sum, y, z, p, e, k) {
@@ -194,7 +194,7 @@
         var y, z, sum, e, p, q;
         z = v[n];
         sum = 0;
-        for (q = Math.floor(6 + 52/length) | 0; q > 0; --q) {
+        for (q = Math.floor(6 + 52 / length) | 0; q > 0; --q) {
             sum = int32(sum + DELTA);
             e = sum >>> 2 & 3;
             for (p = 0; p < n; ++p) {
@@ -212,7 +212,7 @@
         var n = length - 1;
         var y, z, sum, e, p, q;
         y = v[0];
-        q = Math.floor(6 + 52/length);
+        q = Math.floor(6 + 52 / length);
         for (sum = int32(q * DELTA); sum !== 0; sum = int32(sum - DELTA)) {
             e = sum >>> 2 & 3;
             for (p = n; p > 0; --p) {
@@ -238,22 +238,22 @@
             }
             else if (codeUnit < 0x800) {
                 buf[j] = String.fromCharCode(0xC0 | (codeUnit >> 6),
-                                             0x80 | (codeUnit & 0x3F));
+                    0x80 | (codeUnit & 0x3F));
             }
             else if (codeUnit < 0xD800 || codeUnit > 0xDFFF) {
                 buf[j] = String.fromCharCode(0xE0 | (codeUnit >> 12),
-                                             0x80 | ((codeUnit >> 6) & 0x3F),
-                                             0x80 | (codeUnit & 0x3F));
+                    0x80 | ((codeUnit >> 6) & 0x3F),
+                    0x80 | (codeUnit & 0x3F));
             }
             else {
                 if (i + 1 < n) {
                     var nextCodeUnit = str.charCodeAt(i + 1);
                     if (codeUnit < 0xDC00 && 0xDC00 <= nextCodeUnit && nextCodeUnit <= 0xDFFF) {
                         var rune = (((codeUnit & 0x03FF) << 10) | (nextCodeUnit & 0x03FF)) + 0x010000;
-                        buf[j] = String.fromCharCode(0xF0 | ((rune >> 18) &0x3F),
-                                                     0x80 | ((rune >> 12) & 0x3F),
-                                                     0x80 | ((rune >> 6) & 0x3F),
-                                                     0x80 | (rune & 0x3F));
+                        buf[j] = String.fromCharCode(0xF0 | ((rune >> 18) & 0x3F),
+                            0x80 | ((rune >> 12) & 0x3F),
+                            0x80 | ((rune >> 6) & 0x3F),
+                            0x80 | (rune & 0x3F));
                         ++i;
                         continue;
                     }
@@ -270,56 +270,56 @@
         for (var len = bs.length; i < n && off < len; i++) {
             var unit = bs.charCodeAt(off++);
             switch (unit >> 4) {
-            case 0:
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-            case 6:
-            case 7:
-                charCodes[i] = unit;
-                break;
-            case 12:
-            case 13:
-                if (off < len) {
-                    charCodes[i] = ((unit & 0x1F) << 6) |
-                                    (bs.charCodeAt(off++) & 0x3F);
-                }
-                else {
-                    throw new Error('Unfinished UTF-8 octet sequence');
-                }
-                break;
-            case 14:
-                if (off + 1 < len) {
-                    charCodes[i] = ((unit & 0x0F) << 12) |
-                                   ((bs.charCodeAt(off++) & 0x3F) << 6) |
-                                   (bs.charCodeAt(off++) & 0x3F);
-                }
-                else {
-                    throw new Error('Unfinished UTF-8 octet sequence');
-                }
-                break;
-            case 15:
-                if (off + 2 < len) {
-                    var rune = (((unit & 0x07) << 18) |
-                                ((bs.charCodeAt(off++) & 0x3F) << 12) |
-                                ((bs.charCodeAt(off++) & 0x3F) << 6) |
-                                (bs.charCodeAt(off++) & 0x3F)) - 0x10000;
-                    if (0 <= rune && rune <= 0xFFFFF) {
-                        charCodes[i++] = (((rune >> 10) & 0x03FF) | 0xD800);
-                        charCodes[i] = ((rune & 0x03FF) | 0xDC00);
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                    charCodes[i] = unit;
+                    break;
+                case 12:
+                case 13:
+                    if (off < len) {
+                        charCodes[i] = ((unit & 0x1F) << 6) |
+                            (bs.charCodeAt(off++) & 0x3F);
                     }
                     else {
-                        throw new Error('Character outside valid Unicode range: 0x' + rune.toString(16));
+                        throw new Error('Unfinished UTF-8 octet sequence');
                     }
-                }
-                else {
-                    throw new Error('Unfinished UTF-8 octet sequence');
-                }
-                break;
-            default:
-                throw new Error('Bad UTF-8 encoding 0x' + unit.toString(16));
+                    break;
+                case 14:
+                    if (off + 1 < len) {
+                        charCodes[i] = ((unit & 0x0F) << 12) |
+                            ((bs.charCodeAt(off++) & 0x3F) << 6) |
+                            (bs.charCodeAt(off++) & 0x3F);
+                    }
+                    else {
+                        throw new Error('Unfinished UTF-8 octet sequence');
+                    }
+                    break;
+                case 15:
+                    if (off + 2 < len) {
+                        var rune = (((unit & 0x07) << 18) |
+                            ((bs.charCodeAt(off++) & 0x3F) << 12) |
+                            ((bs.charCodeAt(off++) & 0x3F) << 6) |
+                            (bs.charCodeAt(off++) & 0x3F)) - 0x10000;
+                        if (0 <= rune && rune <= 0xFFFFF) {
+                            charCodes[i++] = (((rune >> 10) & 0x03FF) | 0xD800);
+                            charCodes[i] = ((rune & 0x03FF) | 0xDC00);
+                        }
+                        else {
+                            throw new Error('Character outside valid Unicode range: 0x' + rune.toString(16));
+                        }
+                    }
+                    else {
+                        throw new Error('Unfinished UTF-8 octet sequence');
+                    }
+                    break;
+                default:
+                    throw new Error('Bad UTF-8 encoding 0x' + unit.toString(16));
             }
         }
         if (i < n) {
@@ -335,56 +335,56 @@
         for (var len = bs.length; i < n && off < len; i++) {
             var unit = bs.charCodeAt(off++);
             switch (unit >> 4) {
-            case 0:
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-            case 6:
-            case 7:
-                charCodes[i] = unit;
-                break;
-            case 12:
-            case 13:
-                if (off < len) {
-                    charCodes[i] = ((unit & 0x1F) << 6) |
-                                    (bs.charCodeAt(off++) & 0x3F);
-                }
-                else {
-                    throw new Error('Unfinished UTF-8 octet sequence');
-                }
-                break;
-            case 14:
-                if (off + 1 < len) {
-                    charCodes[i] = ((unit & 0x0F) << 12) |
-                                   ((bs.charCodeAt(off++) & 0x3F) << 6) |
-                                   (bs.charCodeAt(off++) & 0x3F);
-                }
-                else {
-                    throw new Error('Unfinished UTF-8 octet sequence');
-                }
-                break;
-            case 15:
-                if (off + 2 < len) {
-                    var rune = (((unit & 0x07) << 18) |
-                                ((bs.charCodeAt(off++) & 0x3F) << 12) |
-                                ((bs.charCodeAt(off++) & 0x3F) << 6) |
-                                (bs.charCodeAt(off++) & 0x3F)) - 0x10000;
-                    if (0 <= rune && rune <= 0xFFFFF) {
-                        charCodes[i++] = (((rune >> 10) & 0x03FF) | 0xD800);
-                        charCodes[i] = ((rune & 0x03FF) | 0xDC00);
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                    charCodes[i] = unit;
+                    break;
+                case 12:
+                case 13:
+                    if (off < len) {
+                        charCodes[i] = ((unit & 0x1F) << 6) |
+                            (bs.charCodeAt(off++) & 0x3F);
                     }
                     else {
-                        throw new Error('Character outside valid Unicode range: 0x' + rune.toString(16));
+                        throw new Error('Unfinished UTF-8 octet sequence');
                     }
-                }
-                else {
-                    throw new Error('Unfinished UTF-8 octet sequence');
-                }
-                break;
-            default:
-                throw new Error('Bad UTF-8 encoding 0x' + unit.toString(16));
+                    break;
+                case 14:
+                    if (off + 1 < len) {
+                        charCodes[i] = ((unit & 0x0F) << 12) |
+                            ((bs.charCodeAt(off++) & 0x3F) << 6) |
+                            (bs.charCodeAt(off++) & 0x3F);
+                    }
+                    else {
+                        throw new Error('Unfinished UTF-8 octet sequence');
+                    }
+                    break;
+                case 15:
+                    if (off + 2 < len) {
+                        var rune = (((unit & 0x07) << 18) |
+                            ((bs.charCodeAt(off++) & 0x3F) << 12) |
+                            ((bs.charCodeAt(off++) & 0x3F) << 6) |
+                            (bs.charCodeAt(off++) & 0x3F)) - 0x10000;
+                        if (0 <= rune && rune <= 0xFFFFF) {
+                            charCodes[i++] = (((rune >> 10) & 0x03FF) | 0xD800);
+                            charCodes[i] = ((rune & 0x03FF) | 0xDC00);
+                        }
+                        else {
+                            throw new Error('Character outside valid Unicode range: 0x' + rune.toString(16));
+                        }
+                    }
+                    else {
+                        throw new Error('Unfinished UTF-8 octet sequence');
+                    }
+                    break;
+                default:
+                    throw new Error('Bad UTF-8 encoding 0x' + unit.toString(16));
             }
             if (i >= 0x7FFF - 1) {
                 var size = i + 1;
@@ -410,8 +410,8 @@
             return bs.substr(0, n);
         }
         return ((n < 0xFFFF) ?
-                utf8DecodeShortString(bs, n) :
-                utf8DecodeLongString(bs, n));
+            utf8DecodeShortString(bs, n) :
+            utf8DecodeLongString(bs, n));
     }
 
     function encrypt(data, key) {
