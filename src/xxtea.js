@@ -409,7 +409,7 @@
             if (n === bs.length) return bs;
             return bs.substr(0, n);
         }
-        return ((n < 0xFFFF) ?
+        return ((n < 0x7FFF) ?
             utf8DecodeShortString(bs, n) :
             utf8DecodeLongString(bs, n));
     }
