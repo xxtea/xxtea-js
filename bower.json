@@ -1,7 +1,7 @@
 {
     "name": "xxtea-js",
     "description": "XXTEA is a fast and secure encryption algorithm. This is a XXTEA library for JavaScript.",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "keywords": [
         "js",
         "xxtea",
@@ -23,6 +23,5 @@
         "README_zh_CN.md",
         "README.md"
     ],
-    "dependencies": {
-    }
+    "dependencies": {}
 }
